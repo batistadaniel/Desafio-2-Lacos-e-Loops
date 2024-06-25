@@ -1,16 +1,16 @@
-
 function tabuada(numero, msg) {
-    
-    msg.textContent = "";
-    msg.style.display = "flex";
+    msg.textContent = ""; // zera conteudo existente
+    msg.style.display = "flex"; // exibe o conteudo 
 
-    if (!isNaN(numero) && numero.trim() !== "") {
+    //se apos limpar inicio e fim da string ela for vazia ou se nao for um numero valido
+    if (numero.trim() === "" || isNaN(numero)) {
+        msg.innerHTML = "Digite um número válido";
+        document.getElementById("numero").value = ""; // limpa o input 
+    } else {
         for (let i = 1; i <= 10; i++) {
+            // exibe a tabuada formatada
             msg.innerHTML += `${numero} x ${i} = ${numero * i} <br>`;
         }
-    } else {
-        msg.innerHTML = "Digite um número válido";
-        document.getElementById("numero").value = "";
     }
 }
 
@@ -23,4 +23,3 @@ document.addEventListener("DOMContentLoaded", function() {
         tabuada(numero, msg);
     });
 });
-
